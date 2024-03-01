@@ -367,14 +367,17 @@ audio {
   function fadeOutAudio() {
     volumeFadeInterval = setInterval(function() {
         var audio = document.getElementById('audio');
-        if (audioVolume > 0.05) { // Menurunkan ambang batas agar lebih sensitif
-            audioVolume -= 0.05; // Pengurangan volume lebih kecil untuk sensitivitas yang lebih tinggi
+        if (audioVolume > 0.01) { // Menurunkan ambang batas agar lebih sensitif
+            audioVolume -= 0.01; // Pengurangan volume lebih kecil untuk sensitivitas yang lebih tinggi
             audio.volume = audioVolume; // Atur volume audio
         } else {
-            clearInterval(volumeFadeInterval); // Hentikan interval saat volume mencapai 0.05 atau lebih rendah
+            audioVolume = 0; // Pastikan volume benar-benar 0 saat mencapai batas minimum
+            audio.volume = audioVolume; // Atur volume audio
+            clearInterval(volumeFadeInterval); // Hentikan interval saat volume mencapai 0.01 atau lebih rendah
         }
-    }, 150); // Interval waktu perubahan volume (dalam milidetik) lebih pendek untuk sensitivitas yang lebih tinggi
+    }, 100); // Interval waktu perubahan volume (dalam milidetik) lebih pendek untuk sensitivitas yang lebih tinggi
 }
+
 
   
   // Function to redirect to video.html page
