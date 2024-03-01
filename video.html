@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy birthday Sayanggggg</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: background 1s ease-in;
+    position: relative;
+  }
+
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #redirectButton {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<video id="videoPlayer" onclick="startVideo()">
+  <source src="assets/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<button id="redirectButton" onclick="redirectToCard()">Sayangg yuk baca surat dari aku</button>
+
+<script>
+  var videoPlayer = document.getElementById('videoPlayer');
+  var redirectButton = document.getElementById('redirectButton');
+  
+  videoPlayer.addEventListener('ended', function() {
+    redirectButton.style.display = 'block'; // Show button
+    setTimeout(function() {
+      videoPlayer.play(); // Resume video playback
+      redirectButton.style.display = 'none'; // Hide button
+    }, 5000); // Show button for 5 seconds
+  });
+
+  function startVideo() {
+    videoPlayer.play();
+    // Hide the button after starting the video
+    document.getElementById('videoPlayer').removeAttribute('controls');
+    document.getElementById('redirectButton').style.display = 'none';
+  }
+
+  document.addEventListener('mouseover', function() {
+    document.body.style.background = 'black url("background.jpg")';
+  });
+
+  document.addEventListener('mouseout', function() {
+    document.body.style.background = 'black url("background.jpg")';
+  });
+
+  function redirectToCard() {
+    window.location.href = "card.html";
+  }
+</script>
+</body>
+</html>

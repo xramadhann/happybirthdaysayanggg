@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy birthday Sayanggggg</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+  overflow: hidden; /* Mencegah gambar latar belakang terlihat di luar viewport */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* Mencegah gambar latar belakang terlihat di luar container */
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Menempatkan gambar di belakang konten lain */
+}
+
+.card {
+  display: none;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card.show {
+  display: block;
+}
+
+.content {
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+audio {
+  display: none;
+}
+
+#candle {
+  width: 100px;
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+#candle img {
+  width: 200%;
+  height: auto;
+  position: relative;
+  right:60px;
+  top: 80px;
+}
+
+.flame {
+  width: 30px;
+  height: 80px;
+  position: absolute;
+  bottom: 100px;
+  background: radial-gradient(circle, #ffeca9, #ffca45, #ffba00, #ff9e00, #ff7400);
+  border-radius: 50%;
+  animation: flicker 0.1s infinite alternate;
+  transform-origin: bottom center;
+}
+.flame.left {
+  left: 0px;
+}
+.flame.right {
+  right: 0px;
+}
+
+@keyframes flicker {
+  0% {
+    transform: scaleY(0.9) translate(-50%, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scaleY(1.1) translate(-50%, 5px);
+    opacity: 1;
+  }
+}
+
+#video-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#blowText {
+  display: none;
+  position: absolute;
+  top: 75%;
+  left: 250px;
+  right: -10px;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ff0000;
+  animation: wiggle 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translate(-50%, -50%) rotate(-2deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(2deg);
+  }
+}
+
+.bg-bubbles {
+  position: fixed;
+  top: 0;
+  right: 25%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255,255,255,0.15);
+  bottom: -160px;
+  animation: square 25s infinite;
+  transition-timing-function: linear;
+  border-radius: 50%; /* Tambahkan border-radius untuk membuatnya lingkaran */
+}
+
+/* Efek pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.bg-bubbles li img {
+  width: 100%; /* Memastikan gambar mengisi seluruh ruang yang tersedia */
+  border-radius: 50%; /* Tambahkan border-radius untuk membuatnya lingkaran */
+  animation: pulse 5s infinite; /* Terapkan animasi pulse */
+}
+
+.bg-bubbles li:nth-child(1) {
+  left: 50%;
+}
+
+.bg-bubbles li:nth-child(2) {
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 2s;
+  animation-duration: 17s;
+}
+
+.bg-bubbles li:nth-child(3) {
+  left: 55%;
+  animation-delay: 4s;
+}
+
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-duration: 22s;
+  background-color: rgba(255,255,255,0.25);
+}
+
+.bg-bubbles li:nth-child(5) {
+  left: 70%;
+}
+
+.bg-bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 120px;
+  animation-delay: 3s;
+  background-color: rgba(255,255,255,0.2);
+}
+
+.bg-bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 160px;
+  animation-delay: 7s;
+}
+
+.bg-bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 15s;
+  animation-duration: 40s;
+}
+
+.bg-bubbles li:nth-child(9) {
+  left: 25%;
+  width: 10px;
+  height: 10px;
+  animation-delay: 2s;
+  animation-duration: 40s;
+  background-color: rgba(255,255,255,0.3);
+}
+
+.bg-bubbles li:nth-child(10) {
+  left: 90%;
+  width: 160px;
+  height: 160px;
+  animation-delay: 11s;
+}
+
+@keyframes square {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-700px) rotate(600deg);
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="background-image"></div> <!-- Tambahkan elemen untuk gambar latar belakang -->
+  <ul class="bg-bubbles">
+    <li><img src="assets/element1.png" alt=""></li>
+    <li><img src="assets/element2.png" alt=""></li>
+    <li><img src="assets/element3.png" alt=""></li>
+    <li><img src="assets/element4.png" alt=""></li>
+    <li><img src="assets/element5.png" alt=""></li>
+    <li><img src="assets/element6.png" alt=""></li>
+    <li><img src="assets/element7.png" alt=""></li>
+    <li><img src="assets/element8.png" alt=""></li>
+    <li><img src="assets/element9.png" alt=""></li>
+    <li><img src="assets/element10.png" alt=""></li>
+  </ul>
+  <div id="video-container">
+    <div id="candle">
+      <img src="assets/candle.png" alt="Candle">
+      <div class="flame left"></div>
+      <div class="flame right"></div>
+    </div>
+    <div id="blowText">Yuk sayanggg ditiup lilinnya </div>
+  </div>
+  <div class="card" id="card">
+    <div class="content">
+      <h2>Ucapan Cinta</h2>
+      <p>Semoga hari ini penuh dengan cinta dan kebahagiaan. Kamu adalah segalanya bagiku!</p>
+      <audio id="audio">
+        <source src="assets/happy_birthday_song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+  <button id="showCardBtn" style="display: none;">Tampilkan Kartu Ucapan</button>
+</div>
+<script>
+  var isBlown = false;
+  var isPlaying = false;
+  var audioVolume = 1.0; // Volume awal audio
+  var volumeFadeInterval; // Interval untuk mengurangi volume secara bertahap
+  var blowAllowed = false; // Kontrol untuk memeriksa apakah tiupan lilin diizinkan
+  
+  // Access microphone
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(function(stream) {
+      var audioContext = new AudioContext();
+      var analyser = audioContext.createAnalyser();
+      var microphone = audioContext.createMediaStreamSource(stream);
+      microphone.connect(analyser);
+      
+      analyser.fftSize = 256;
+      var bufferLength = analyser.frequencyBinCount;
+      var dataArray = new Uint8Array(bufferLength);
+  
+      // Animate candle flame based on microphone input
+      function animateCandle() {
+        analyser.getByteFrequencyData(dataArray);
+        var average = getAverageVolume(dataArray);
+        var newHeight; // Deklarasi variabel newHeight di luar loop
+        
+        // Adjust candle flame based on microphone input volume
+        var flames = document.querySelectorAll('.flame');
+        flames.forEach(function(flame) {
+          newHeight = Math.max(10, 80 - average * 0.6); // Assign value to newHeight
+          flame.style.height = newHeight + 'px'; // Set the new height
+        });
+        requestAnimationFrame(animateCandle);
+    
+        // If flame height is small enough, set isBlown to true
+        if (newHeight <= 10 && !isBlown && blowAllowed) { // Mengubah kondisi dari == menjadi <= dan menambahkan pengecekan blowAllowed
+          isBlown = true;
+          fadeOutAudio(); // Mengurangi volume audio secara bertahap
+          redirectToVideoPage(); // Redirect ke halaman video.html jika lilin sudah padam
+          hideCandle(); // Sembunyikan lilin setelah mengarahkan pengguna ke halaman video.html
+        }
+      }
+    
+      animateCandle();
+      startAudio(); // Mulai audio
+    })
+    .catch(function(err) {
+      console.error('Gagal mengakses mikrofon: ', err);
+    });
+  
+  // Function to calculate average volume from frequency data
+  function getAverageVolume(array) {
+    var values = 0;
+    var average;
+    var length = array.length;
+    for (var i = 0; i < length; i++) {
+      values += array[i];
+    }
+    average = values / length;
+    return average;
+  }
+  
+  // Function to fade out the audio gradually
+  function fadeOutAudio() {
+    volumeFadeInterval = setInterval(function() {
+      var audio = document.getElementById('audio');
+      if (audioVolume > 0.3) { // Periksa apakah volume masih cukup tinggi
+        audioVolume -= 0.3; // Pengurangan volume sebesar 0.1 setiap interval
+        audio.volume = audioVolume; // Atur volume audio
+      } else {
+        clearInterval(volumeFadeInterval); // Hentikan interval saat volume mencapai 0.1 atau lebih rendah
+      }
+    }, 500); // Interval waktu perubahan volume (dalam milidetik)
+  }
+  
+  // Function to redirect to video.html page
+  function redirectToVideoPage() {
+    window.location.href = 'video.html';
+  }
+  
+  // Function to hide the candle after it's blown out
+  function hideCandle() {
+    var candle = document.getElementById('candle');
+    candle.style.display = 'none';
+  }
+  
+  // Function to start the audio
+  function startAudio() {
+    if (!isPlaying) {
+      var audio = document.getElementById('audio');
+      audio.play();
+      isPlaying = true;
+    }
+  }
+  
+  // Handle candle click event
+  document.getElementById('candle').addEventListener('click', function() {
+    if (!isBlown && blowAllowed) { // Menambahkan pengecekan blowAllowed
+      var flame = document.getElementById('flame');
+      flame.style.display = 'none';
+      isBlown = true;
+      fadeOutAudio(); // Mengurangi volume audio secara bertahap
+      redirectToVideoPage(); // Redirect ke halaman video.html jika lilin ditiup
+      hideCandle(); // Sembunyikan lilin setelah mengarahkan pengguna ke halaman video.html
+    }
+  });
+
+  // Timer to allow blow action at second 30
+  setTimeout(function() {
+    blowAllowed = true;
+    document.getElementById('blowText').style.display = 'block'; // Menampilkan teks "Yuk ditiup lilinnya!"
+  }, 22000);
+</script>
+</body>
+</html>
