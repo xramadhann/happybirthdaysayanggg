@@ -368,7 +368,7 @@ audio {
     volumeFadeInterval = setInterval(function() {
       var audio = document.getElementById('audio');
       if (audioVolume > 0.3) { // Periksa apakah volume masih cukup tinggi
-        audioVolume -= 0.3; // Pengurangan volume sebesar 0.1 setiap interval
+        audioVolume -= 0.10; // Pengurangan volume sebesar 0.1 setiap interval
         audio.volume = audioVolume; // Atur volume audio
       } else {
         clearInterval(volumeFadeInterval); // Hentikan interval saat volume mencapai 0.1 atau lebih rendah
